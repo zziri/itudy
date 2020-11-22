@@ -14,8 +14,6 @@ public class StringBuilderTest {
 		System.out.println(System.identityHashCode(buffer));
 		
 		System.out.println(buffer);
-		
-		
 
 	}
 

@@ -8,7 +8,7 @@ public class CoffeeTest {
 		latte.brewing();
 		
 		Coffee americanoEtiopia = new EtiopiaAmericano();
-		Coffee mocha = new Mocha(latte);
+		Coffee mocha = new Mocha(americanoEtiopia);
 		mocha.brewing();
 
 	}

@@ -26,10 +26,26 @@ public class LinkedList<T>{
 	{
 		head = null;
 	    count = 0;
-	}   
+	}
+	
+	public void addFirst(T data)
+	{	 
+	   if(head == null) // 비어있는 linked list인 경우
+	   {
+		   head = new Node(data,null);
+	   }
+	   else
+	   {
+         Node tmp = head;
+         head = new Node(data,head);         
+        
+	   }
+	   count++;
+	      
+	}
 	
 	// list 맨 마지막에 삽입하는 경우
-	public void add(T data)
+	public void addLast(T data)
 	{	 
 	   if(head == null) // 비어있는 linked list인 경우
 	   {
@@ -60,20 +76,19 @@ public class LinkedList<T>{
 		   System.out.println(msg);
 	   }
 
-	   Node prev;
-	   Node pNode;
-	   Node tmp;
-
-	   // 맨 앞에 삽입하는 경우 
-	   if(idx == 0)
+	   if(head == null) // 비어있는 linked list인 경우
+	   {
+		   head = new Node(data,null);
+	   }
+	   else if(idx == 0) // 맨 앞에 삽입하는 경우
 	   {      
-		   tmp = head;
-		   head = new Node(data,tmp);
+		   head = new Node(data,head);
 	   }
 	   else
 	   {
-		   prev = null;
-		   pNode = head;
+		   Node prev = null;
+		   Node pNode = head;
+		   
 		   for(int i=0; i<idx; i++) // 해당 index 위치 전까지 이동
 		   {
 			   prev = pNode;
@@ -104,9 +119,7 @@ public class LinkedList<T>{
    			System.out.println(msg);
    		}
 
-   		Node pNode;
-   		Node prev;
-   		Node next;
+   		
    		// 맨 앞의 노드를 삭제하는 경우
    		if(idx == 0)
    		{   
@@ -114,16 +127,17 @@ public class LinkedList<T>{
    		}
    		else
    		{
-   			prev = null;
-   			pNode = head;
+   			Node prev = null;
+   			Node pNode = head;
+   	   		Node next;
+   	   		  			
    			next = head.next;
    			for(int i=0; i<idx; i++) // 해당 index 위치 전까지 이동
    			{
    				prev = pNode;
    				pNode = pNode.next;   
    			}
-   			next = pNode.next;
-   			prev.next = next;
+   			prev.next = pNode.next;
    		}
    		count--;
    

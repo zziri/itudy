@@ -62,7 +62,7 @@ customerList.stream().map(c->c.getName()).forEach(s->System.out.println(s));
 
 **count():** 요소의 개수
 
-**sum(): **요소의 합
+**sum():** 요소의 합
 
 
 

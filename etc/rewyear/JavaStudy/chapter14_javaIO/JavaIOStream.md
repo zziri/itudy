@@ -27,9 +27,9 @@
 
 #### 기반 스트림과 보조 스트림
 
-* **기반 스트림: **대상에 직접 자료를 읽고 쓰는 기능을 가진 스트림
-* **보조 스트림: **직접 읽고 쓰는 기능은 없으나 추가적인 기능을 제공해주는 스트림으로서 기반 스트림이나 또 다른 보조 스트림을 생성자의 매개변수로 포함함
-* **보조스트림의 종류: **InputStreamReader, OutputStreamWriter, BufferedInputStream, BufferedOutputStream 등
+* **기반 스트림:** 대상에 직접 자료를 읽고 쓰는 기능을 가진 스트림
+* **보조 스트림:** 직접 읽고 쓰는 기능은 없으나 추가적인 기능을 제공해주는 스트림으로서 기반 스트림이나 또 다른 보조 스트림을 생성자의 매개변수로 포함함
+* **보조스트림의 종류:** InputStreamReader, OutputStreamWriter, BufferedInputStream, BufferedOutputStream 등
 
 
 
@@ -75,7 +75,7 @@ java.util 패키지에 있는 입력 클래스로서 문자뿐만 아니라 정�
 **FilterStreamReader와 FilterStreamWriter: **실제 읽고 쓰는 스트림이 아닌 보조적인 기능을 추가해주는 스트림으로서 데코레이터 패턴이라고도 함.   
 생성자의 매개변수로 InputStream과 OutputStream을 받아 해당 스트림에 보조 기능을 추가해 줌.   
 
-* 대표적인 보조 스트림 클래스: InputStreamReader와 OutputStreamWriter
+* 대표적인 보조 스트림 클래스: **InputStreamReader와 OutputStreamWriter**
   (바이트 단위 스트림도 보조 스트림을 통해 바이트 단위를 문자 단위로 읽고 쓸수 있음)   
 
 * **Bufferd 스트림:** 내부에 8192바이트 배열을 가지고 있으며, 읽거나 쓸 때 속도가 빠름

@@ -50,7 +50,7 @@ class Shape<T> {
 * 객체를 순서에 따라 저장하고 관리할때 사용하는 메서드가 선언된 인터페이스
 * 배열의 기능을 구현하기 위한 메서드가 선언됨
 
-**ArrayList와 Vector: ** 객체 배열 클래스로서 일반적으로는 ArrayList를 더 많이 사용하나 동기화를 위해서는 Vector를 사용.    
+**ArrayList와 Vector:** 객체 배열 클래스로서 일반적으로는 ArrayList를 더 많이 사용하나 동기화를 위해서는 Vector를 사용.    
 
 **ArrayList와  LinkedList:**  ArrayList의 경우 배열을 구현한 클래스로 논리적 순서와 물리적 순서가 동일.   
 LikedList의 경우 논리적으로 순차적인 구조이나 물리적으로는 순차적이지 않음.   
@@ -62,38 +62,34 @@ LikedList의 경우 논리적으로 순차적인 구조이나 물리적으로는
 #### Set 인터페이스: HashSet, TreeSet
 
 * List 인터페이스와는 다르게  순서가 정해져 있지 않음, 중복을 허용하지 않음.
-* 해당 객체를 순환하기 위해서는 **Iterator**로 순회해야 함.
+* 해당 객체를 순환하기 위해서는 **Iterator**로 순회해야 함.   
 |method|description|
 |---|---|
 |boolean hasNext()|이후에 요소가 더 있는지를 체크하는 메서드이며, 다음 요소가 있다면 true|
 |E next()|다음에 있는 요소를 반환|
 
-**HashSet: ** 중복을 허용하지 않으므로 저장되는 객체의 동일함 여부를 알기 위해 equals(), hashCode() 메서드를 재정의 해야함.   
+**HashSet:** 중복을 허용하지 않으므로 저장되는 객체의 동일함 여부를 알기 위해 equals(), hashCode() 메서드를 재정의 해야함.   
 
-**TreeSet: ** binary search tree로 구현되어 있으며, 오름차순이나 내림차순으로 객체를 정렬 함.   
+**TreeSet:** binary search tree로 구현되어 있으며, 오름차순이나 내림차순으로 객체를 정렬 함.   
 정렬을 위해서 Comparable or Comparator 인터페이스 구현해줘야함.
 
 * Comparable인터페이스 구현시:  compareTo() 메서드 재정의 해줘야 함   
 -> compareTo()양수 반환: 오름차순, 음수 반환: 내림차순 
 
 * Comparator인터페이스 구현시:  compare() 메서드 재정의 해줘야 함   
+	-> compareTo()와 유사하나 매개변수가 2개 들어옴. 양수 반환: 오름차순, 음수 반환: 내림차순 
+	```
+	public int compare(Obj o1, Obj o2) 
+	```
 
-  -> compareTo()와 유사하나 매개변수가 2개 들어옴. 양수 반환: 오름차순, 음수 반환: 내림차순 
+	-> TreeSet 인스턴스 생성시 객체를 하나 삽입해 줘야함(그래야 첫 삽입시 비교할 대상인 o1 생김)
 
-  ```
- public int compare(Obj o1, Obj o2) 
-  ```
-  
-  -> TreeSet 인스턴스 생성시 객체를 하나 삽입해 줘야함(그래야 첫 삽입시 비교할 대상인 o1 생김)
-  
-  ```
-  private TreeSet<Member> treeSet;
-  public void MemeberTreeSet(){
-  	treeSet = new TreeSet<Member>(new Member());
-  }
-  ```
-
-
+  	```
+  	private TreeSet<Member> treeSet;
+  	public void MemeberTreeSet(){
+  		treeSet = new TreeSet<Member>(new Member());
+  	}
+  	```
 
 
 

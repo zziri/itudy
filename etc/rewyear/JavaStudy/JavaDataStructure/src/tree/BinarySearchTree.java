@@ -2,7 +2,7 @@ package tree;
 
 public class BinarySearchTree {
 	class TreeNode{
-		int data;
+		private int data;
 		TreeNode left;
 		TreeNode right;
 		
@@ -33,42 +33,44 @@ public class BinarySearchTree {
 		TreeNode node = root;
 		while(node != null)	
 		{
-			if(key == node.data)
+			if(key == node.getData())
 				return node;
-			else if(key < node.data)
+			else if(key < node.getData())
 				node = node.left;
 			else 
 				node = node.right;
 		}
-		return null;
+		return node;
 	}
 	
 	public void insertNode(int key)
 	{
-		TreeNode tmp = root;
+		TreeNode target = root;
 		TreeNode parent = null;
 		TreeNode newNode = new TreeNode(key);
 		
-		if(root == null) // ºñ¾îÀÖ´Â Æ®¸®ÀÏ °æ¿ì
+		if(root == null) // ë¹„ì–´ìžˆëŠ” íŠ¸ë¦¬ì¼ ê²½ìš°
 		{
-			root = newNode; 
+			root = newNode;
+			return;
 		}
 		
-		while(tmp != null)	// Æ®¸®ÀÇ ºó°ø°£±îÁö Ã£¾Æ°¡´Â ¿¬»ê
+		while(target != null)	// íŠ¸ë¦¬ì˜ ë¹ˆê³µê°„ê¹Œì§€ ì°¾ì•„ê°€ëŠ” ì—°ì‚°
 		{
-			if(tmp.data == newNode.getData()) // Áßº¹µÇ´Â °æ¿ì 
+			if(target.getData() == newNode.getData()) // ì¤‘ë³µë˜ëŠ” ê²½ìš° 
 			{
-				System.out.println("Áßº¹µÇ´Â key°ª ÀÔ´Ï´Ù.");
+				System.out.println("ì¤‘ë³µë˜ëŠ” keyê°’ ìž…ë‹ˆë‹¤.");
+				return;
 			}				
-			else if(newNode.getData() < tmp.data) // »ðÀÔÇÏ·Á´Â key °ªÀÌ ÇöÀç ³ëµåº¸´Ù ÀÛÀº°æ¿ì
+			else if(newNode.getData() < target.getData()) // ì‚½ìž…í•˜ë ¤ëŠ” key ê°’ì´ í˜„ìž¬ ë…¸ë“œë³´ë‹¤ ìž‘ì€ê²½ìš°
 			{
-				parent = tmp;
-				tmp = tmp.left; 
+				parent = target;
+				target = target.left; 
 			}
 			else
 			{
-				parent = tmp;
-				tmp = tmp.right; 
+				parent = target;
+				target = target.right; 
 			}
 		}
 		
@@ -84,49 +86,50 @@ public class BinarySearchTree {
 		TreeNode parent = null;
 		boolean isLeft = false;
 		
-		while(target != null && target.data != key)	
+		while(target != null && target.data != key) // ë‹¨ë§ë…¸ë“œ(ë)ê¹Œì§€ íƒìƒ‰í•˜ëŠ”ë™ì•ˆ && ì‚­ì œí•  ë°ì´í„°ë¥¼ ì°¾ëŠ”ë™ì•ˆ	
 		{
-			if(key < target.data) // »èÁ¦ÇÏ·Á´Â key °ªÀÌ ÇöÀç ³ëµåº¸´Ù ÀÛÀº°æ¿ì
+			if(key < target.getData()) // ì‚­ì œí•˜ë ¤ëŠ” key ê°’ì´ í˜„ìž¬ ë…¸ë“œë³´ë‹¤ ìž‘ì€ê²½ìš°
 			{
 				parent = target;
-				target = parent.left; // Å¸°ÙÀ§Ä¡ ¿ÞÂÊÀ¸·Î ¼±Á¤
+				target = parent.left; // íƒ€ê²Ÿìœ„ì¹˜ ì™¼ìª½ìœ¼ë¡œ ì„ ì •
 				isLeft = true;
 			}
 			else
 			{
 				parent = target;
-				target = parent.right; // Å¸°ÙÀ§Ä¡¸¦ ¿À¸¥ÂÊÀ¸·Î ¼±Á¤
+				target = parent.right; // íƒ€ê²Ÿìœ„ì¹˜ë¥¼ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì„ ì •
 				isLeft = false;
 			}
 		}
 		
-		if(target == null) {
-			System.out.println("Ã£´Â key °ªÀÌ ¾ø½À´Ï´Ù.");
+		if(target == null) 
+		{
+			System.out.println("ì°¾ëŠ” key ê°’ì´ ì—†ìŠµë‹ˆë‹¤.");
 			return false;
 		}
 		
-		// case1. ´Ü¸»³ëµåÀÎ °æ¿ì
-		if((target.left == null) && (target.right == null)) {
-			if(target == root) {// Æ®¸®¿¡ ·çÆ® ÇÏ³ª¸¸ ÀÖÀ»°æ¿ì
+		if((target.left == null) && (target.right == null)) // case1. ë‹¨ë§ë…¸ë“œì¸ ê²½ìš°
+		{
+			if(target == root) // íŠ¸ë¦¬ì— ë£¨íŠ¸ í•˜ë‚˜ë§Œ ìžˆì„ê²½ìš°
+			{
 				target = null;
 				return true;
 			}
 			
-			// ºÎ¸ð³ëµå¿Í »èÁ¦ÇÏ·Á´Â ³ëµå¸¦ ²÷´Â ÀÛ¾÷
+			// ë¶€ëª¨ë…¸ë“œì™€ ì‚­ì œí•˜ë ¤ëŠ” ë…¸ë“œë¥¼ ëŠëŠ” ìž‘ì—…
 			if(isLeft)
 				parent.left = null;
 			else
 				parent.right = null;
 		}
-		// case2. ÀÚ½Ä ³ëµå°¡ 1°³ÀÎ °æ¿ì
-		else if(target.left == null)
+		else if(target.left == null) // case2. ìžì‹ ë…¸ë“œê°€ 1ê°œì¸ ê²½ìš°		
 		{ 
-			// Æ®¸®¿¡ ·çÆ® ÇÏ³ª¸¸ ÀÖÀ»°æ¿ì
+			// ì‚­ì œí•  ë…¸ë“œê°€ ë£¨íŠ¸ë…¸ë“œì´ë©°, ì‚­ì œ í›„ ë…¸ë“œê°€ ìžì‹ ë…¸ë“œ 1ê°œì¸ ê²½ìš°
 			if(target == root) {
 				target = target.right;
 				return true;
 			}
-			// »èÁ¦ÇÏ·Á´Â ³ëµåÀÇ ÀÚ½Ä³ëµå¸¦ ºÎ¸ð³ëµå¿¡ ¿¬°á½ÃÄÑÁÜ
+			// ì‚­ì œí•˜ë ¤ëŠ” ë…¸ë“œì˜ ìžì‹ë…¸ë“œë¥¼ ë¶€ëª¨ë…¸ë“œì— ì—°ê²°ì‹œì¼œì¤Œ
 			if(isLeft)
 				parent.left = target.right;
 			else 
@@ -134,22 +137,20 @@ public class BinarySearchTree {
 		}
 		else if(target.right == null)
 		{
-			// Æ®¸®¿¡ ·çÆ® ÇÏ³ª¸¸ ÀÖÀ»°æ¿ì
 			if(target == root) {
 				target = target.left;
 				return true;
 			}
-			// »èÁ¦ÇÏ·Á´Â ³ëµåÀÇ ÀÚ½Ä³ëµå¸¦ ºÎ¸ð³ëµå¿¡ ¿¬°á½ÃÄÑÁÜ
+			
 			if(isLeft)
 				parent.left = target.left;
 			else 
 				parent.right = target.left;
 		}
-		//case3. µÎ °³ÀÇ ¼­ºêÆ®¸®¸¦ °¡Áö´Â °æ¿ì
-		else
+		else //case3. ë‘ ê°œì˜ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ê°€ì§€ëŠ” ê²½ìš°
 		{
 			TreeNode subParent = target;
-			TreeNode subTarget = target.left; // ¿ÞÂÊ¼­ºêÆ®¸®¿¡¼­ ¿À¸¥ÂÊ¸µÅ©·Î ´Ü¸»³ëµå°¡ ³ª¿Ã¶§±îÁö °Ë»ö ÁøÇà
+			TreeNode subTarget = target.left; // ì™¼ìª½ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ì˜¤ë¥¸ìª½ë§í¬ë¡œ ë‹¨ë§ë…¸ë“œê°€ ë‚˜ì˜¬ë•Œê¹Œì§€ ê²€ìƒ‰ ì§„í–‰
 			
 			while(subTarget.right != null)
 			{
@@ -157,20 +158,20 @@ public class BinarySearchTree {
 				subTarget = subTarget.right;				
 			}
 
-			// ÈÄ¼Ó targetÀÇ ÀÚ½Ä³ëµå¸¦ ÈÄ¼Ó ºÎ¸ð³ëµåÀÇ ÀÚ½Ä³ëµåÀ¸·Î º¯°æ(ÈÄ¼Ó target°¡ ºüÁö´Ï±î)
+			// í›„ì† targetì˜ ìžì‹ë…¸ë“œë¥¼ í›„ì† ë¶€ëª¨ë…¸ë“œì˜ ìžì‹ë…¸ë“œìœ¼ë¡œ ë³€ê²½(í›„ì† targetê°€ ë¹ ì§€ë‹ˆê¹Œ)
 			if(subTarget.left != null)
 				subParent.right = subTarget.left;
 			else
 				subParent.right = subTarget.right;
 	
-			// Ã£Àº »õ·Î¿î targetÀ» targetÀ¸·Î º¯°æ
-			target.data = subTarget.getData();			
+			// ì°¾ì€ ìƒˆë¡œìš´ targetì„ targetìœ¼ë¡œ ë³€ê²½
+			target.setData(subTarget.getData());			
 		}
 		
 		return false;	
 	}
 	
-	public void displayTree(TreeNode t)
+	public void displayTree(TreeNode t) // ì¤‘ìœ„ìˆœíšŒë¥¼ í†µí•´ ìˆœì°¨ì ìœ¼ë¡œ ì¶œë ¥
 	{
 		if(t != null) {
 			displayTree(t.left);

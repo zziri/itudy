@@ -1,15 +1,5 @@
 package priorityQueue;
-
-class Swap{
-	public static void swap(int[] list, int idx1, int idx2)
-	{
-		int tmp;
-		
-		tmp = list[idx1];
-		list[idx1] = list[idx2];
-		list[idx2] = tmp;
-	}
-}
+import utils.Util;
 
 public class PriorityQueue {
 	private int count;
@@ -40,7 +30,7 @@ public class PriorityQueue {
 	public int deleteHeap()
 	{
 		int item = maxHeap[0]; // root 노드 값
-		int tmp = maxHeap[count-1 ]; // 마지막 노드 값
+		int tmp = maxHeap[count-1]; // 마지막 노드 값
 		
 		int currentIndex = 0; // root부터 시작
 		int childIndex = (2*currentIndex) + 1; // 왼쪽 자식노드

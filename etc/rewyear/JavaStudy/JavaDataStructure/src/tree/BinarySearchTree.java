@@ -23,6 +23,14 @@ public class BinarySearchTree {
 	
 	private TreeNode root;
 
+	public TreeNode getRoot() {
+		return root;
+	}
+
+	public void setRoot(TreeNode root) {
+		this.root = root;
+	}
+
 	public BinarySearchTree()
 	{
 		this.root = null;

@@ -36,7 +36,7 @@ thread가 join(), sleep(), wait() 메서드에 의해 blocking되었다면 inter
 
 
 ## Thread 동기화(synchronization)
-Multi Thread 프로그래밍에서 공유자원에 대한 동시 접근을 막기위해 하나의 thread만 접근 가능하게 해야한다. 이때 공유자원을 **임계영역(Critical Section)**이라고 하며, 이를 위해 해당 자원에 **lock(*mutex*)**을 걸어주어 동시접근을 막고 thread간의 접근 순서를 맞추는 행위를 **동기화**라고 한다.
+Multi Thread 프로그래밍에서 공유자원에 대한 동시 접근을 막기위해 하나의 thread만 접근 가능하게 해야한다. 이때 공유자원을 **임계영역(Critical Section)** 이라고 하며, 이를 위해 해당 자원에 **lock(*mutex*)** 을 걸어주어 동시접근을 막고 thread간의 접근 순서를 맞추는 행위를 **동기화**라고 한다.
 
 ![thread 동기화](https://github.com/zziri/itudy/blob/master/image/)
 

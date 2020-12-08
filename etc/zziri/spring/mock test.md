@@ -1,13 +1,8 @@
-
-# spring
-
-spring framework를 공부하고 실습한 것을 정리합니다
-
-## mock test
+# mock test
 
 mockito를 이용한 mock test
 
-### setting
+## setting
 
 Mockito에서 제공하는 mock 객체를 사용하기 위해 Test 클래스에 어노테이션을 달아야합니다
 ```java
@@ -29,7 +24,7 @@ private PersonService personService;
 
 테스트하고자 하는 클래스가 다른 클래스 객체를 멤버로 포함하고 있을 경우 `@InjectMocks` 어노테이션으로 주입하여 사용할 수 있습니다
 
-### 리턴 값이 있는 경우
+## 리턴 값이 있는 경우
 
 리턴 값이 있는 메소드의 경우 when, thenReturn 메소드를 이용해서 mocking이 가능합니다
 
@@ -39,7 +34,7 @@ when(personRepository.findById(1L))
         .thenReturn(Optional.of(new Person("martin")));
 ```
 
-### 리턴값이 없는 메소드의 경우
+## 리턴값이 없는 메소드의 경우
 
 리턴 값이 없는 메소드의 경우 verify와 save 메소드를 이용해 mocking이 가능합니다
 
@@ -66,9 +61,3 @@ private static class IsPersonWillBeDeleted implements ArgumentMatcher<Person> {
     }
 }
 ```
-
-
-# TODO
-
-- [ ] https://github.com/zziri/spring-boot-study/commit/df721671c31517646e75acf52d623ff85016ee8b exception throw test with mock
-- [ ] https://github.com/zziri/spring-boot-study/commit/e777bb305f4abddc21bc6ce76929e07a3e2645a9 add exception

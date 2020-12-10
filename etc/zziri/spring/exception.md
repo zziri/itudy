@@ -94,3 +94,28 @@ public class PersonController {
 }
 ```
 
+## Global Exception Handling
+
+Global Exception Handler를 정의합니다
+
+```java
+public class GlobalExceptionHandler {
+    @ExceptionHandler(value = RenameIsNotPermittedException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleRenameNoPermittedException(RenameIsNotPermittedException ex) {
+        return ErrorResponse.of(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+    // 다른 Exception Handler 들....
+}
+```
+
+Global 하게 사용하기 위해서는 @RestControllerAdvice annotation을 달아야합니다
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+}
+```
+
+이렇게 하면 ExceptionHandler들을 Controller마다 정의할 필요 없이 global 하게 동작합니다
+

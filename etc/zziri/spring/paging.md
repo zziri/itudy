@@ -45,6 +45,12 @@ public class PersonController {
 }
 ```
 
+Pageable은 JPA에서 정의한 Paging을 위한 인터페이스입니다
+
+content, totalPages, totalElements, numberOfElements 등의 속성이 있습니다
+
+@PageableDefault는 API에서 페이징을 위한 파라미터가 존재하지 않을 때, 페이징을 위한 기본값을 제공하도록 하는 어노테이션입니다
+
 ## 사용해보기
 
 `Postman`과 같은 http client로 `localhost:8080/api/person?page=0&size=2`으로 GET 요청을 해봅니다

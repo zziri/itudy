@@ -1,7 +1,7 @@
 # 기본적인 html 문법
 웹 페이지의 화면을 표현하기 위해 정의된 문법. **<태그 속성="value">** 구조 형태   
-   
-   
+
+
 ### 기본 문법   
 **```<html> </html>```**: html문서임을 표시하는 태그   
 
@@ -24,9 +24,9 @@ ex) 기본적으로 ```<meta name="속성 이름" content="속성 값">``` 형�
 	<meta name="keywords" content="html,css,javascript"> <! 핵심키워드>
 	<meta name="robots" content="ALL">
 </head>
-```   
+```
 
-* **```<body></body>```**: 웹페이지를 디스플레이할때 사용하는 tag   
+**```<body></body>```**: 웹페이지를 디스플레이할때 사용하는 tag   
 
 ### 문자 tag   
 * ```<p></p>```: 문자를 적을 때 쓰는 태그(paragraph)   

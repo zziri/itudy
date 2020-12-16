@@ -3,47 +3,52 @@ package graph;
 import java.util.ArrayList;
 
 class GraphByList {
-	private ArrayList<ArrayList<Integer>> adjList;
-	private int n; // 차수
+	private ArrayList<Integer>[] adjList;
+	private int degree; // 차수
 	
 	
 	public GraphByList(int initSize)
 	{	
 		// 인접리스트 생성
-		adjList = new ArrayList<ArrayList<Integer>>();
-		n = initSize;
+		adjList = new ArrayList[initSize+1];
+		degree = initSize;
 		
 		// 각 정점에 대한 인접리스트 초기화 
-		for(int i=0; i<=n; i++) 
+		for(int i=1; i<=degree; i++) 
 		{
-			adjList.add(new ArrayList<Integer>());
+			adjList[i] = new ArrayList<Integer>();
 		}
 	}
 	
 	public ArrayList<Integer> getNode(int idx)
 	{
-		return adjList.get(idx);
+		return adjList[idx];
+	}
+	
+	public int getDegree()
+	{
+		return degree;
 	}
 	
 	public void insertEdge(int start, int end)
 	{
-		adjList.get(start).add(end);
-		adjList.get(end).add(start);
+		adjList[start].add(end);
+		adjList[end].add(start);
 	}
 	
 	public void insertEdgeSingle(int start, int end)
 	{
-		adjList.get(start).add(end);
+		adjList[start].add(end);
 	}
 	
 	public void printAdjList() 
 	{
-		for(int i=1; i<adjList.size(); i++)
+		for(int i=1; i<=degree; i++)
 		{
 			System.out.printf("Adj Node of %d",i);
-			for(int j=0; j<adjList.get(i).size(); j++)
+			for(int j=0; j<adjList[i].size(); j++)
 			{
-				System.out.printf(" -> %d",adjList.get(i).get(j));
+				System.out.printf(" -> %d",adjList[i].get(j));
 			}
 			System.out.println("");
 		}

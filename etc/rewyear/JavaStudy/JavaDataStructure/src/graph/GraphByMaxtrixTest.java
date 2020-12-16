@@ -9,6 +9,16 @@ class GraphByMaxtrix {
 		adj_matrix = new int[initSize + 1][initSize + 1];
 	}
 	
+	public int[] getNode(int idx)
+	{
+		return adj_matrix[idx];
+	}
+	
+	public int getDegree()
+	{
+		return adj_matrix.length-1;
+	}
+	
 	// To do: 차수(인덱스범위) 벗어났을때 throw하게 구현
 	// 무방향 그래프 간선 추가
 	public void insertEdge(int start, int end)

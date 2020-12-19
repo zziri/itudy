@@ -94,12 +94,13 @@ public class BinarySearchTree {
 		TreeNode parent = null;
 		boolean isLeft = false;
 		
-		while(target != null && target.data != key) // 단말노드(끝)까지 탐색하는동안 && 삭제할 데이터를 찾는동안	
+		while(target != null && target.data != key) // 단말노드(끝)까지 탐색하하거나 삭제할 데이터를 찾아감
 		{
-			if(key < target.getData()) // 삭제하려는 key 값이 현재 노드보다 작은경우
+			// 삭제하려는 key 값이 현재 노드보다 작은경우
+			if(key < target.getData()) 
 			{
 				parent = target;
-				target = parent.left; // 타겟위치 왼쪽으로 선정
+				target = parent.left; 
 				isLeft = true;
 			}
 			else
@@ -166,11 +167,11 @@ public class BinarySearchTree {
 				subTarget = subTarget.right;				
 			}
 
-			// 후속 target의 자식노드를 후속 부모노드의 자식노드으로 변경(후속 target가 빠지니까)
+			
 			if(subTarget.left != null)
 				subParent.right = subTarget.left;
 			else
-				subParent.right = subTarget.right;
+				subParent.right = subTarget.right; // null
 	
 			// 찾은 새로운 target을 target으로 변경
 			target.setData(subTarget.getData());			

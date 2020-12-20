@@ -23,7 +23,7 @@ class QuickSort{
 	
 		while(low < high)
 		{
-			// pivot 보다 큰 요소를 찾을때 까지 R2L
+			// pivot 보다 큰 요소를 찾을때 까지 R2L하거나  low,high가 교차하는 경우 
 			while(low < high && list[high] > pivot) 
 				high--;
 			

@@ -34,7 +34,6 @@ public class BFSTest {
 				{
 					checked[next] = true; // 해당 노드 방문 체크
 					queue.add(next); // 큐에 enqueue
-					
 				}
 					
 			}

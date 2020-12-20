@@ -81,6 +81,10 @@ ex) 기본적으로 ```<meta name="속성 이름" content="속성 값">``` 형�
 * ```<action>```: 폼의 데이터가 전송되는 서버 url   
 * ```<method>```: 통신 방식(ex. GET, POST...)   
 
+**```<label>```**: 각 입력 양식의 레이블을 표시, input의 클릭 가능 영역을 확장
+	"for"속성을 이용하여 어떤 input의 레이블인지 지정
+
+
 **```<input></input>```**: ```<form>```은 전체 양식을 의미하며 추상적인 태그, 실제로는 <input> 태그를 이용하여 구현.   
 "type속성"을 이용하여 input의 종류를 나타내며, "name"을 통해 데이터의 이름, "value"를 통해 default 값 정의   
 
@@ -88,23 +92,26 @@ ex) 기본적으로 ```<meta name="속성 이름" content="속성 값">``` 형�
 ```
 <form>
 	<p>
-		<strong>아이디</strong>
-		<input type="text" name="id" value="ID">
+		<label for="ip-id">아이디</label>
+		<input id="ip-id" type="text" name="id" value="ID">
 	</p>
 	<p>
-		<strong>비밀번호</strong>
-		<input type="password" name="password" value="PWD">
+		<label for="ip-pw">비밀번호</label>
+		<input id="ip-pw" type="password" name="password" value="PWD">
 	</p>
 	<p>
-		<strong>성별</strong>
-		<input type="radio" name="gender" value="M">남자
-		<input type="radio" name="gender" value="F">여자
+		<input id="ip-male" type="radio" name="gender" value="M">
+		<label for="ip-male">남자</label>
+		<input id="ip-female" type="radio" name="gender" value="F">
+		<label for="ip-female">여자</label>
 	</p>
 	<p>
-		<strong>수신 설정</strong>
-		<input type="checkbox" name="part" value="SNS">SNS
-		<input type="checkbox" name="part" value="message">메시지
-		<input type="checkbox" name="part" value="email">이메일
+		<input id="ip-sns" type="checkbox" name="part" value="SNS">
+		<label for="ip-sns">SNS</label>
+		<input id="ip-msg" type="checkbox" name="part" value="message">
+		<label for="ip-msg">메시지</label>
+		<input id="ip-email" type="checkbox" name="part" value="email">
+		<label for="ip-email">이메일</label>
 	</p>
 	<p>
 		<input type="submit" value="제출">

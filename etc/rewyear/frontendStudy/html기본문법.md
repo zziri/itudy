@@ -28,7 +28,7 @@ ex) 기본적으로 ```<meta name="속성 이름" content="속성 값">``` 형�
 
 **```<body></body>```**: 웹페이지를 디스플레이할때 사용하는 tag   
 
-
+![html기본구조](https://github.com/zziri/itudy/blob/master/image/html기본구조.png)
 
 ### 문자 tag   
 

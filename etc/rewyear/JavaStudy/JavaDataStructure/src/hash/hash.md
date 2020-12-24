@@ -45,7 +45,7 @@ int hashFunc(int key)
 ### 충돌해결
 **분리 연결법(Separate Chaining)**
 버켓에 연결리스트 등의 자료구조를 이용하여 동일 버켓에 하나 이상의 값을 저장할 수 있도록 구현
-![separate chaining](https://github.com/zziri/itudy/blob/master/image/)
+![separate chaining](https://github.com/zziri/itudy/blob/master/image/separate_chaining.png)
 
 
 
@@ -58,7 +58,7 @@ int hashFunc(int key)
 2) 이차조사법(quardraitc probing): 선형 조사법과 비슷하지만 증가량이 제곱
 **h(k) % M -> h(k) + 1^2 % M -> h(k) + 2^2 % M -> ''''''**
 
-![open addressing](https://github.com/zziri/itudy/blob/master/image/)
+![open addressing](https://github.com/zziri/itudy/blob/master/image/open_addressing.png)
 
 	*Open Addressing을 진행하다가 해시테이블이 가득찬 경우 리사이징을 하는데 threshold는 현재 버켓의 75%정도이며 load factor로 불린다. 보통 2배 크기로 리사이징하며 기존버켓의 저장되어 있는 것들을 해시함수를 거쳐 다시 새로운 해시테이블에 복사
 

@@ -1,4 +1,4 @@
-package implementation.ex4_1»óÇÏÁÂ¿ì;
+package implementation.ex1;
 
 import java.util.Scanner;
 

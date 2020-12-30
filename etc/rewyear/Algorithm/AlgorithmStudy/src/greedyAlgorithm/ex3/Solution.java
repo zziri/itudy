@@ -1,4 +1,4 @@
-package greedyAlgorithm.ex3_3숫자카드게임;
+package greedyAlgorithm.ex3;
 
 import java.util.Arrays;
 import java.util.Scanner;

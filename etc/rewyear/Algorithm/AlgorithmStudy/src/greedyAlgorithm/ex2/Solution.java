@@ -1,4 +1,4 @@
-package greedyAlgorithm.ex3_2큰수의법칙;
+package greedyAlgorithm.ex2;
 
 import java.util.Arrays;
 import java.util.Scanner;

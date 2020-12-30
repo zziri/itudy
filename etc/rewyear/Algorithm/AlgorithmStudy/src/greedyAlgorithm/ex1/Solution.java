@@ -1,4 +1,4 @@
-package greedyAlgorithm.ex3_1°Å½º¸§µ·;
+package greedyAlgorithm.ex1;
 
 import java.util.Scanner;
 

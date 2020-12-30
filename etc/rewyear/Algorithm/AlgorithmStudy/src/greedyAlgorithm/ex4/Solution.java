@@ -1,4 +1,4 @@
-package greedyAlgorithm.ex3_4일이될때까지;
+package greedyAlgorithm.ex4;
 
 import java.util.Scanner;
 

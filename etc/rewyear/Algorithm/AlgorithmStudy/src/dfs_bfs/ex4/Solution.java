@@ -69,8 +69,6 @@ public class Solution {
 					// 이전 노드에 비해 한칸 더 이동한 것이므로 +1
 					checked[nr][nc] = checked[node.r][node.c] + 1;
 				}
-					
-				
 			}
 		}
 		

@@ -20,16 +20,17 @@ public class Solution {
 		Arrays.sort(arr1);
 		Arrays.sort(arr2, Collections.reverseOrder());
 		
-		int i=0, j=0;
-		while(K >= 0 && i<=K) 
+		int i=0;
+		while(K > 0) // 바꿀수 있는 횟수동안
 		{
-			if(arr1[i] < arr2[j]) {
-				arr1[i++] = arr2[j++];
+			if(arr1[i] <= arr2[i]) 
+			{
+				arr1[i] = arr2[i];
+				i++;
 				K--;
 			}
-			else {
-				j++;
-			}
+			else // 해당 조건문 이후의 요소는 arr1의 요소가 arr2 요소보다 더 큼 
+				break;
 				
 		}
 		
@@ -38,8 +39,6 @@ public class Solution {
 			total += num;
 		
 		System.out.println(total);
-		
-		
 	}
 	
 	public static void main(String[] args) {

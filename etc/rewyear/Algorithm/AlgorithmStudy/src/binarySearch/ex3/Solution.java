@@ -17,7 +17,7 @@ public class Solution {
             arr[i] = sc.nextInt();
         }
 
-        // 높이 범위 기반으로 이진 탐색을 위한 시작점과 끝점 설정
+        // 높이 기반으로 이진 탐색을 위한 시작점과 끝점 설정
         int start = 0;
         int end = (int) 1e9; // 높이 최대 값: 1,000,000,000
         

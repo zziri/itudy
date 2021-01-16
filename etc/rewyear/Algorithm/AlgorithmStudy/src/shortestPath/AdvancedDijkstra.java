@@ -1,4 +1,4 @@
-package shotestPath;
+package shortestPath;
 
 import java.util.*;
 

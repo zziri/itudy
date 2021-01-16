@@ -1,4 +1,4 @@
-package shotestPath;
+package shortestPath;
 
 public class Node implements Comparable<Node>{
 	private int index;

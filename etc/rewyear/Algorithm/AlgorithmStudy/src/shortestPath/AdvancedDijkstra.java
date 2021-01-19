@@ -22,14 +22,16 @@ public class AdvancedDijkstra {
 			int dist = node.getDistance();
 			int now = node.getIndex();
 			
+			// dequeue한 now노드의 거리보다 이미 최단 거리 테이블의 now노드 거리가 작은 경우
 			if(d[now] < dist) continue;
 			
+			// 각 스텝마다 최단거리의 노드를 찾아 해당 노드를 거쳐갈때의 비용을 구해서 최단거리 갱신
 			for(int i=0; i < graph.get(now).size(); i++)
 			{
 				int cost = d[now] + graph.get(now).get(i).getDistance();
 				if(cost < d[graph.get(now).get(i).getIndex()]) {
 					d[graph.get(now).get(i).getIndex()] = cost;
-					pq.offer(new Node(graph.get(now).get(i).getIndex(), cost));
+					pq.offer(new Node(graph.get(now).get(i).getIndex(), cost)); // 우선 순위 큐에 enqueue하므로 자동적으로 최단거리가 맨 앞에 위치
 				}
 			}
 			

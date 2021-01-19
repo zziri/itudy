@@ -5,7 +5,7 @@ import java.util.*;
 public class Dijkstra {	
 	public static final int INF = (int)1e9; // 무한 값 설정
 	
-	public static int n,m,start;
+	public static int n,m,start; // 노드갯수, 간선갯수, 시작점
 	
 	public static ArrayList<ArrayList<Node>> graph = new ArrayList<ArrayList<Node>>(); // 그래프 정보를 담는 배열
 	public static boolean[] visited = new boolean[100001]; // 방문 체크 목적의 배열
@@ -16,7 +16,8 @@ public class Dijkstra {
 		int idx = 0;
 		for(int i=1; i<= n; i++)
 		{
-			if(d[i] < minValue && !visited[i]) {
+			if(d[i] < minValue && !visited[i]) // 방문하지 않은 지점 중 현재 가장 짧은 거리를 가지고 있는 경우 
+			{
 				minValue = d[i];
 				idx = i;
 			}
@@ -30,11 +31,11 @@ public class Dijkstra {
 		d[start] = 0;
 		visited[start] = true;
 		
-		// 시작점에서 부터 최단 거리 테이블 초기화
+		// 시작점에서부터 인접노드까지 최단 거리 테이블 초기화
 		for(int j=0; j<graph.get(start).size(); j++)
 			d[graph.get(start).get(j).getIndex()] = graph.get(start).get(j).getDistance();
 		
-		// 시작 노드를 제외한 n-1개의 노드에 대하여 해당 알고리즘 반복
+		// 각 스텝마다 최단거리의 노드를 찾아 해당 노드를 거쳐갈때의 비용을 구해서 최단거리 갱신
 		for(int i=0; i<n-1; i++) 
 		{
 			int now = getSmallestNode();
@@ -42,10 +43,9 @@ public class Dijkstra {
 			
 			for(int j=0; j<graph.get(now).size(); j++)
 			{
-				// 현재 지점에서 j노드까지 가는데 비용
 				int cost = d[now] + graph.get(now).get(j).getDistance();
 				
-				// 
+				// 현재 지점(now)을 거쳐 i노드로 가는 비용이 적게 드는 경우 
 				if(cost < d[graph.get(now).get(j).getIndex()]) {
 					d[graph.get(now).get(j).getIndex()] = cost;
 				}

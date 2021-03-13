@@ -1,28 +1,16 @@
 class Solution {
-    private Integer val;
-    private boolean result;
-
-    private void travel(TreeNode cur) {
+    private int travel(int depth, TreeNode cur) {
         if (cur == null)
-            return;
+            return depth;
         
-        travel(cur.left);
-        if (val == null) {
-            val = cur.val;
-        } else {
-            if (val >= cur.val) {
-                result = false;
-            } else {
-                val = cur.val;
-            }
-        }
-        travel(cur.right);
+        int ret = 0;
+        ret = Math.max(ret, travel(depth+1, cur.left));
+        ret = Math.max(ret, travel(depth+1, cur.right));
+
+        return ret;
     }
     
-    public boolean isValidBST(TreeNode root) {
-        val = null; result = true;
-        travel(root);
-        
-        return result;
+    public int maxDepth(TreeNode root) {
+        return travel(0, root);
     }
 }

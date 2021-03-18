@@ -1,3 +1,5 @@
+// MEMO : 역방향도 좋은 방법 (별도의 메모리가 필요없다)
+
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] temp = new int[m];

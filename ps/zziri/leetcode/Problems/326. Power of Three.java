@@ -1,4 +1,4 @@
-// MEMO : Math Class의 method들은 부하가 큰 편이다(특히 pow같은 함수), 가끔은 Naive한 방법이 더 좋을 때도 있다. Parametric Search 방법도 고민해볼 필요가 있다
+// MEMO : Math Class의 method들은 부하가 큰 편이다(특히 pow같은 함수), 가끔은 Naive한 방법이 더 좋을 때도 있다. Pow를 사용하지 않는 방법도 고민해볼 필요가 있다
 
 // 17msec, 22.54%
 class Solution {

@@ -4,4 +4,4 @@
 
 ## 다시 풀어봐야하는 문제
 
-[ ] [leetcode - 55. Jump Game](https://leetcode.com/problems/jump-game/)
+- [ ] [leetcode - 55. Jump Game](https://leetcode.com/problems/jump-game/)

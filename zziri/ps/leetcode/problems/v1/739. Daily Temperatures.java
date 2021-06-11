@@ -1,19 +1,29 @@
+// MEMO : 주어진 데이터에서 상승세를 알아낼 땐 stack 을 이용하자!!
+
+/*
+    Runtime: 33 ms, faster than 28.18% of Java online submissions for Daily Temperatures.
+    Memory Usage: 49.2 MB, less than 17.41% of Java online submissions for Daily Temperatures.
+*/
+class Pair {
+    public int t;
+    public int i;
+    Pair(int t, int i) { this.t = t; this.i = i; }
+}
+
 class Solution {
-    private int getWaitingTerm(int[] t, int idx) {
-        int ret = 0;
-        int base = t[idx];
-        for (int i=idx+1; i<t.length; i++) {
-            if (base < t[i]) {
-                ret = i - idx;
-                break;
+    public int[] dailyTemperatures(int[] temperatures) {
+        int[] ret = new int[temperatures.length];
+        Stack<Pair> stack = new Stack<>();
+        for (int i=0; i<temperatures.length; i++) {
+            while (!stack.isEmpty() && stack.peek().t < temperatures[i]) {
+                Pair pair = stack.pop();
+                ret[pair.i] = i - pair.i;
             }
+            stack.push(new Pair(temperatures[i], i));
         }
-        return ret;
-    }
-    public int[] dailyTemperatures(int[] T) {
-        int[] ret = new int[T.length];
-        for (int i=0; i<T.length-1; i++) {
-            ret[i] = getWaitingTerm(T, i);
+        while (!stack.isEmpty()) {
+            Pair pair = stack.pop();
+            ret[pair.i] = 0;
         }
         return ret;
     }

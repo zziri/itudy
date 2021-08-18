@@ -1,21 +1,20 @@
-// MEMO : 문제 풀때 항상 끄적끄적
+// MEMO : dp는 의외로 많이 쓰인다
 
-// Runtime: 2 ms, faster than 42.99% of Java online submissions for Counting Bits.
-// Memory Usage: 43.4 MB, less than 26.90% of Java online submissions for Counting Bits.
+// Runtime: 1 ms, faster than 99.83% of Java online submissions for Counting Bits.
+// Memory Usage: 43 MB, less than 73.90% of Java online submissions for Counting Bits.
 class Solution {
-    private int getBitCount(int val) {
-        int ret = 0;
-        while (val > 0) {
-            ret += val & 0x01;
-            val >>= 1;
-        }
-        return ret;
-    }
     public int[] countBits(int n) {
-        int[] arr = new int[n+1];
-        for (int i=0; i<=n; i++) {
-            arr[i] = getBitCount(i);
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        if (n > 0)
+            dp[1] = 1;
+        for (int i=2; i<=n; i++) {
+            if ((i & 1) == 0) {
+                dp[i] = dp[i>>1];
+            } else {
+                dp[i] = dp[i-1] + 1;
+            }
         }
-        return arr;
+        return dp;
     }
 }

@@ -1,50 +1,41 @@
-// MEMO : LinkedHashSet을 활용하면 순서를 기억할 수 있음..!
+// MEMO : LinkedHashMap을 활용해도 순서를 기억할 수 있음
 
-// Runtime: 181 ms, faster than 5.03% of Java online submissions for LRU Cache.
-// Memory Usage: 165.4 MB, less than 24.63% of Java online submissions for LRU Cache.
+// Runtime: 51 ms, faster than 56.96% of Java online submissions for LRU Cache.
+// Memory Usage: 118.1 MB, less than 48.04% of Java online submissions for LRU Cache.
 
 class LRUCache {
-    private int cap;
-    private Map<Integer, Integer> map;
-    private Set<Integer> ref;
+    private int capacity;
+    private Map<Integer, Integer> cache;
     
-    private int findFirst(Set<Integer> set) {
-        int ret = 0;
-        for (int n : set) {
-            ret = n;
+    private void removeFirst(Map<Integer, Integer> map) {
+        for (int key : map.keySet()) {
+            map.remove(key);
             break;
+        }
+    }
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        cache = new LinkedHashMap<>();
+    }
+    
+    public int get(int key) {
+        int ret = -1;
+        if (cache.containsKey(key)) {
+            int value = cache.get(key);
+            cache.remove(key);
+            cache.put(key, value);
+            ret = value;
         }
         return ret;
     }
     
-    public LRUCache(int capacity) {
-        this.cap = capacity;
-        map = new HashMap<>();
-        ref = new LinkedHashSet<>();
-    }
-    
-    public int get(int key) {
-        if (!map.containsKey(key)) {
-            return -1;
-        }
-        ref.remove(key);
-        ref.add(key);
-        return map.get(key);
-    }
-    
     public void put(int key, int value) {
-        if (map.containsKey(key)) {
-            ref.remove(key);
-            ref.add(key);
-            map.put(key, value);
-            return;
+        if (cache.containsKey(key)) {
+            cache.remove(key);
+        } else if (cache.size() == capacity) {
+            removeFirst(cache);
         }
-        if (cap == map.size()) {
-            int oldKey = findFirst(ref);
-            ref.remove(oldKey);
-            map.remove(oldKey);
-        }
-        ref.add(key);
-        map.put(key, value);
+        cache.put(key, value);
     }
 }

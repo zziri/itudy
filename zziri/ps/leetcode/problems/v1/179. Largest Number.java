@@ -1,9 +1,9 @@
-// MEMO : 해답 보자 이렇게 푸는게 아닌듯
+// MEMO : String.format 은 상당히 느리다 차라리 + 연산이 낫다
 
-// Runtime: 38 ms, faster than 5.16% of Java online submissions for Largest Number.
-// Memory Usage: 39.4 MB, less than 45.80% of Java online submissions for Largest Number.
+// Runtime: 5 ms, faster than 79.08% of Java online submissions for Largest Number.
+// Memory Usage: 38.1 MB, less than 97.79% of Java online submissions for Largest Number.
 
-class Solution {    
+class Solution {
     public String largestNumber(int[] nums) {
         List<String> list = new ArrayList<>();
         boolean isAllZero = true;
@@ -17,8 +17,8 @@ class Solution {
             return "0";
         
         list.sort((l, r) -> {
-            String lr = String.format("%s%s", l, r);
-            String rl = String.format("%s%s", r, l);
+            String lr = l + r;
+            String rl = r + l;
             return rl.compareTo(lr);
         });
         

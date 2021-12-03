@@ -1,14 +1,17 @@
-// MEMO : 거의 베낀 수준임.. 다시 풀어야함
+// MEMO : 다시 풀었지만 기억으로 푼 것 같다, 좀 더 나중에 다시 풀어야함
 
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        if (nums.length < 3)    return false;
+        if (nums.length < 3)
+            return false;
+        
         int left = Integer.MAX_VALUE, mid = Integer.MAX_VALUE;
-        for (int i=0; i<nums.length; i++) {
-            if (left >= nums[i]) {
-                left = nums[i];
-            } else if (mid >= nums[i]) {
-                mid = nums[i];
+        
+        for (int num : nums) {
+            if (num <= left) {
+                left = num;
+            } else if (num <= mid) {
+                mid = num;
             } else {
                 return true;
             }

@@ -1,41 +1,28 @@
-// MEMO : 너어무 복잡한데...? 성능도 안좋다..
+// MEMO : 다시 풀어봤는데, 이번에는 간결하고 성능도 괜찮은듯
 
 class Solution {
-    private String zip(String str) {
-        Map<Character, Integer> pool = new TreeMap<>();
-        for (int i=0; i<str.length(); i++) {
-            Character c = str.charAt(i);
-            pool.put(c, pool.getOrDefault(c, 0) + 1);
-        }
-        StringBuilder ret = new StringBuilder();
-        for (Map.Entry<Character, Integer> entry : pool.entrySet()) {
-            ret.append(entry.getKey()).append(entry.getValue());
-        }
-        return ret.toString();
+    private String getSortedString(String origin) {
+        char[] array = origin.toCharArray();
+        Arrays.sort(array);
+        return new String(array);
     }
-
-    private List<List<String>> toStringList(Map<String, List<String>> zippedMap) {
+    
+    private List<List<String>> getList(Map<String, List<String>> map) {
         List<List<String>> ret = new ArrayList<>();
-        int index = 0;
-        for (Map.Entry<String, List<String>> entry : zippedMap.entrySet()) {
-            ret.add(new ArrayList<>());
-            for (String str : entry.getValue()) {
-                ret.get(index).add(str);
-            }
-            index += 1;
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            ret.add(entry.getValue());
         }
         return ret;
     }
-
+    
     public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> zippedMap = new HashMap<>();
+        Map<String, List<String>> map = new HashMap<>();
         for (String str : strs) {
-            String zippedStr = zip(str);
-            if (!zippedMap.containsKey(zippedStr)) {
-                zippedMap.put(zippedStr, new ArrayList<>());
-            }
-            zippedMap.get(zippedStr).add(str);
+            String sorted = getSortedString(str);
+            if (!map.containsKey(sorted))
+                map.put(sorted, new ArrayList<>());
+            map.get(sorted).add(str);
         }
-        return toStringList(zippedMap);
+        return getList(map);
     }
 }

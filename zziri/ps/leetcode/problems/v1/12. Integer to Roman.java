@@ -1,32 +1,26 @@
-// MEMO : 이분탐색법으로 찾아야하지 않을까
+// MEMO : 간단하게 최적화 했지만 그래도 이분탐색은 해보는게 좋을 듯
 
-// Runtime: 38 ms, faster than 5.51% of Java online submissions for Integer to Roman.
-// Memory Usage: 45.3 MB, less than 5.12% of Java online submissions for Integer to Roman.
+// Runtime: 7 ms, faster than 47.28% of Java online submissions for Integer to Roman.
+// Memory Usage: 38.8 MB, less than 58.99% of Java online submissions for Integer to Roman.
 
 class Solution {
     static class Roman {
-        private Map<Integer, String> valueToSymbol = new TreeMap<>((l, r) -> r - l);;
+        private Map<Integer, String> valueToSymbol = new LinkedHashMap<>();
+        private int[] values = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+        private String[] symbols = {
+            "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"
+        };
+        
         public Roman() {
-            valueToSymbol.put(1, "I");
-            valueToSymbol.put(4, "IV");
-            valueToSymbol.put(5, "V");
-            valueToSymbol.put(9, "IX");
-            valueToSymbol.put(10, "X");
-            valueToSymbol.put(40, "XL");
-            valueToSymbol.put(50, "L");
-            valueToSymbol.put(90, "XC");
-            valueToSymbol.put(100, "C");
-            valueToSymbol.put(400, "CD");
-            valueToSymbol.put(500, "D");
-            valueToSymbol.put(900, "CM");
-            valueToSymbol.put(1000, "M");
+            for (int i=values.length-1; i>=0; i--) {
+                valueToSymbol.put(values[i], symbols[i]);
+            }
         }
         
-        public int getLargestValue(int n) {
-            for (int value : valueToSymbol.keySet()) {
-                if (n >= value) {
-                    return value;
-                }
+        public int getLargestValue(int target) {
+            for (int i=values.length-1; i>=0; i--) {
+                if (target >= values[i])
+                    return values[i];
             }
             return 1;
         }

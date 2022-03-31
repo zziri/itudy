@@ -1,19 +1,30 @@
-// MEMO : 너무 느리다 뒤에서 순회하도록 수정하자
+// MEMO : 성능 개선 성공..!
 
-// Runtime: 4 ms, faster than 9.09% of Java online submissions for Length of Last Word.
-// Memory Usage: 42.7 MB, less than 17.89% of Java online submissions for Length of Last Word.
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Length of Last Word.
+// Memory Usage: 42.5 MB, less than 25.02% of Java online submissions for Length of Last Word.
 class Solution {
     public int lengthOfLastWord(String s) {
-        int ret = 0, i = 0, length = 0;
-        while (i <= s.length()) {
-            if (i == s.length() || s.charAt(i) == ' ') {
-                ret = length > 0 ? length : ret;
-                length = 0;
-            } else {
-                length += 1;
+        int l = -1, r = -1;
+        for (int i=s.length()-1; i>=0; i--) {
+            if (s.charAt(i) != ' ') {
+                r = i;
+                break;
             }
-            i += 1;
         }
-        return ret;
+        if (r < 0) {
+            return 0;
+        }
+        
+        for (int i=r; i>=0; i--) {
+            if (s.charAt(i) == ' ') {
+                l = i;
+                break;
+            }
+        }
+        if (l < 0) {
+            return r+1;
+        }
+        
+        return r - l;
     }
 }
